@@ -28,7 +28,7 @@
             </div>
 
             <div class="col-md-2 login-button">
-                <button type="button" class="btn btn-primary">Log In</button>
+                <a class="btn btn-primary" href="index.php?page=login">Log In</a>
             </div>
         </div>
 
