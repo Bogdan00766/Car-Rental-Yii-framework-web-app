@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Car Rental Website</title>
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
