@@ -9,8 +9,10 @@
 <body>
     <div class="container header">
         <div class="row">
-            <div class="col-md-2">
-                XD
+            <div class="col-md-2 gokart">
+                <p>GO<br>
+                   KART</p>
+
             </div>
 
             <div class="col-md-8">

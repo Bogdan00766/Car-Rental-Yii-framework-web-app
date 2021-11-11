@@ -1,5 +1,11 @@
 .header{
     background-color: rgb(243,245,250);
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+
+.gokart{
+    color: rgb(75,112,183);
+    font-weight: bolder;
+    font-size: x-large;
 }
