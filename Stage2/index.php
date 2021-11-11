@@ -7,6 +7,22 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    <div class="container header">
+        <div class="row">
+            <div class="col-md-2">
+                XD
+            </div>
+
+            <div class="col-md-8">
+                XD
+            </div>
+
+            <div class="col-md-2">
+                XD
+            </div>
+        </div>
+
+    </div>
 
     <script src="vendor/components/jquery/jquery.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
