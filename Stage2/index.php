@@ -9,33 +9,20 @@
 <body>
     <div class="container header">
         <div class="row">
-            <div class="col-md-2 gokart">
-                <p>GO<br>
-                   KART</p>
+            <div class="col-md-3 gokart-col">
+                <p>GO<br>KART</p>
 
             </div>
 
-            <div class="col-md-8">
+            <div class="col-md-7 navbar-col">
 
-                <nav class="navbar navbar-expand-lg">
-                    <div class="collapse navbar-collapse" id="navbarNav">
-                        <ul class="navbar-nav navbar-back">
-                            <li class="nav-item active">
-                                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Features</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Vehicles</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Discover</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Feedback</a>
-                            </li>
-                        </ul>
+                <nav class="navbar navbar-expand-lg navbar-css">
+                    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                        <div class="navbar-nav">
+                            <a class="nav-link" href="#">Home</a>
+                            <a class="nav-link" href="#">Features</a>
+                            <a class="nav-link" href="#">Vehicles</a>
+                        </div>
                     </div>
                 </nav>
             </div>
