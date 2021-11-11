@@ -19,8 +19,8 @@
                 NAVBAR
             </div>
 
-            <div class="col-md-2">
-                LOGIN
+            <div class="col-md-2 login-button">
+                <button type="button" class="btn btn-primary">Log In</button>
             </div>
         </div>
 

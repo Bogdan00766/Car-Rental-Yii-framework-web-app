@@ -12,3 +12,12 @@
     font-size: x-large;
     padding-left: 50px
 }
+
+.login-button{
+    text-align:center;
+    padding-top: 20px;
+}
+
+.btn-primary{
+    border-radius: 0;
+}
