@@ -16,11 +16,11 @@
             </div>
 
             <div class="col-md-8">
-                XD
+                NAVBAR
             </div>
 
             <div class="col-md-2">
-                XD
+                LOGIN
             </div>
         </div>
 
