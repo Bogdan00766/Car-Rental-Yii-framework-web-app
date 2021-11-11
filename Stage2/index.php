@@ -34,6 +34,21 @@
 
     </div>
 
+    <div class="container main">
+        <?php
+        $file = "pages/home.php";
+        if(isset($_GET["page"])) {
+            $page = $_GET['page'];
+            $f = "pages/$page.php";
+            if(file_exists($f)){
+                $file = $f;
+            }
+        }
+        require_once $file;
+        ?>
+
+    </div>
+
     <script src="vendor/components/jquery/jquery.js"></script>
     <script src="vendor/twbs/bootstrap/dist/js/bootstrap.bundle.js"></script>
 </body>
