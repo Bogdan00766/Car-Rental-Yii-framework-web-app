@@ -27,3 +27,12 @@
     padding-top: 10px;
     font-size: 1.4rem;
 }
+
+.navbar-element{
+    margin-left:25px;
+    margin-right:25px;
+    color: rgb(95,102,104);
+}
+.active{
+    color: rgb(75,112,183);
+}

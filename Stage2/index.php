@@ -19,9 +19,9 @@
                 <nav class="navbar navbar-expand-lg navbar-css">
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link" href="index.php?page=home">Home</a>
-                            <a class="nav-link" href="index.php?page=features">Features</a>
-                            <a class="nav-link" href="index.php?page=vehicles">Vehicles</a>
+                            <a class="nav-link navbar-element active"  href="index.php?page=home">Home</a>
+                            <a class="nav-link navbar-element" href="index.php?page=features">Features</a>
+                            <a class="nav-link navbar-element" href="index.php?page=vehicles">Vehicles</a>
                         </div>
                     </div>
                 </nav>
