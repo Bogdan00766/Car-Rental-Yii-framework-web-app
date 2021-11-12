@@ -7,14 +7,14 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <div class="container header">
+    <div class="container-fluid header">
         <div class="row">
-            <div class="col-md-3 gokart-col">
+            <div class="col-sm-3 gokart-col">
                 <p>GO<br>KART</p>
 
             </div>
 
-            <div class="col-md-7 navbar-col">
+            <div class="col-sm-7 navbar-col">
 
                 <nav class="navbar navbar-expand-lg navbar-css">
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
@@ -37,7 +37,7 @@
                 </nav>
             </div>
 
-            <div class="col-md-2 login-button">
+            <div class="col-sm-2 login-button">
                 <a class="btn btn-primary" href="index.php?page=login">Log In</a>
             </div>
         </div>
