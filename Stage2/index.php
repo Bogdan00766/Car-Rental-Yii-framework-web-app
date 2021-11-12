@@ -19,9 +19,19 @@
                 <nav class="navbar navbar-expand-lg navbar-css">
                     <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                         <div class="navbar-nav">
-                            <a class="nav-link navbar-element active"  href="index.php?page=home">Home</a>
-                            <a class="nav-link navbar-element" href="index.php?page=features">Features</a>
-                            <a class="nav-link navbar-element" href="index.php?page=vehicles">Vehicles</a>
+                            <?php
+                            $file = "pages/home.php";
+                            if(isset($_GET["page"])) {
+                                $page = $_GET['page'];
+                                $f = "pages/$page.php";
+                                if(file_exists($f)){
+                                    $file = $f;
+                                }
+                            }
+                            ?>
+                            <a class="nav-link navbar-element <?php if($page=='home' || is_null($page)) echo("active")?>" href="index.php?page=home">Home</a>
+                            <a class="nav-link navbar-element <?php if($page=='features') echo("active")?>" href="index.php?page=features">Features</a>
+                            <a class="nav-link navbar-element <?php if($page=='vehicles') echo("active")?>" href="index.php?page=vehicles">Vehicles</a>
                         </div>
                     </div>
                 </nav>
@@ -36,14 +46,6 @@
 
     <div class="container main">
         <?php
-        $file = "pages/home.php";
-        if(isset($_GET["page"])) {
-            $page = $_GET['page'];
-            $f = "pages/$page.php";
-            if(file_exists($f)){
-                $file = $f;
-            }
-        }
         require_once $file;
         ?>
 
