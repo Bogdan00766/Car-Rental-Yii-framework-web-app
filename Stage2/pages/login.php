@@ -16,6 +16,7 @@
             </form>
         </div>
         <div class="col register-col">
+            <h1 class="register-header">Register</h1>
             <form>
                 <div class="form-group">
                     <label for="registerInputEmail">Email address</label>
