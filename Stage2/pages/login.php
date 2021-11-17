@@ -1,9 +1,9 @@
 <div class="container">
     <div class="row">
-        <div class="col">
+        <div class="col login-col">
 
         </div>
-        <div class="col">
+        <div class="col register-col">
 
         </div>
     </div>
