@@ -11,7 +11,7 @@
                     <label for="loginInputPassword">Password</label>
                     <input type="password" class="form-control" id="loginInputPassword">
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
         </div>
         <div class="col register-col">
