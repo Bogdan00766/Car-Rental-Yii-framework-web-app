@@ -31,6 +31,10 @@
                     <input type="text" class="form-control" id="registerInputName">
                 </div>
 
+                <div class="form-group">
+                    <label for="registerInputLastName">Last name</label>
+                    <input type="text" class="form-control" id="registerInputLastName">
+                </div>
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>
