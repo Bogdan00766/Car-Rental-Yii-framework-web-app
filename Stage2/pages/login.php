@@ -1,6 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col login-col">
+            <h1 class="login-header">Login</h1>
             <form>
                 <div class="form-group">
                     <label for="loginInputEmail">Email address</label>
