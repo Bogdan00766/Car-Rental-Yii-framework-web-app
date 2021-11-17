@@ -10,7 +10,7 @@
     <div class="container-fluid header">
         <div class="row">
             <div class="col-sm-3 gokart-col">
-                <p>GO<br>KART</p>
+                <a href="index.php?page=home">GO<br>KART</a>
 
             </div>
 
