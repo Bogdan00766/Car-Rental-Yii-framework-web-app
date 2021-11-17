@@ -25,6 +25,12 @@
                     <label for="registerInputPassword">Password</label>
                     <input type="password" class="form-control" id="registerInputPassword">
                 </div>
+
+                <div class="form-group">
+                    <label for="registerInputName">Name</label>
+                    <input type="text" class="form-control" id="registerInputName">
+                </div>
+
                 <button type="submit" class="btn btn-primary">Register</button>
             </form>
         </div>
