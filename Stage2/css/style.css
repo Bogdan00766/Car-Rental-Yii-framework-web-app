@@ -36,3 +36,13 @@
 .active{
     color: rgb(75,112,183);
 }
+.login-col{
+    margin-top:70px;
+
+
+}
+
+.register-col{
+    margin-top:70px;
+    border-left: 1px solid rgb(206,212,218);
+}
