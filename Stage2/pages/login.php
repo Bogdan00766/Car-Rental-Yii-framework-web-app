@@ -15,7 +15,18 @@
             </form>
         </div>
         <div class="col register-col">
+            <form>
+                <div class="form-group">
+                    <label for="registerInputEmail">Email address</label>
+                    <input type="email" class="form-control" id="registerInputEmail">
+                </div>
 
+                <div class="form-group">
+                    <label for="registerInputPassword">Password</label>
+                    <input type="password" class="form-control" id="registerInputPassword">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
         </div>
     </div>
 
