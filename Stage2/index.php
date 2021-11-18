@@ -44,7 +44,7 @@
 
     </div>
 
-    <div class="container main">
+    <div class="container-fluid main">
         <?php
         require_once $file;
         ?>
