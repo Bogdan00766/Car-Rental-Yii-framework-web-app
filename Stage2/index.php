@@ -5,12 +5,15 @@
     <title>Car Rental Website</title>
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home_style.css">
+    <link rel="stylesheet" href="css/vehicles_style.css">
+    <link rel="stylesheet" href="css/features_style.css">
 </head>
 <body>
     <div class="container-fluid header">
         <div class="row">
             <div class="col-sm-3 gokart-col">
-                <p>GO<br>KART</p>
+                <a href="index.php?page=home">GO<br>KART</a>
 
             </div>
 
@@ -44,7 +47,7 @@
 
     </div>
 
-    <div class="container main">
+    <div class="container-fluid main">
         <?php
         require_once $file;
         ?>
