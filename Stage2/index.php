@@ -5,6 +5,9 @@
     <title>Car Rental Website</title>
     <link rel="stylesheet" href="vendor/twbs/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/home_style.css">
+    <link rel="stylesheet" href="css/vehicles_style.css">
+    <link rel="stylesheet" href="css/features_style.css">
 </head>
 <body>
     <div class="container-fluid header">
