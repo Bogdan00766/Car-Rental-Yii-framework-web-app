@@ -18,7 +18,9 @@
         </div>
         <div class="col-4 icon-column">
             <i class="fas fa-shield-alt fa-3x icon-theme"></i>
-
+            <p class= "title">
+                Secure Online Booking
+            </p>
         </div>
         <div class ="col-4 icon-column">
             <i class="fas fa-tag fa-3x icon-theme"></i>
