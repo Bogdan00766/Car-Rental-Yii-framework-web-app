@@ -49,6 +49,8 @@
             <p class= "title">
                 All Inclusive Pricing
             </p>
-
+            <p>
+                Rent a car with pricing inclusive of CDW, Theft Waiver, Unlimited Mileage etc.
+            </p>
 
 </div>
