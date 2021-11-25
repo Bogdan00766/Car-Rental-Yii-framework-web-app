@@ -67,8 +67,11 @@
         <div class ="col-4 icon-column">
             <i class="fas fa-database fa-3x icon-theme"></i>
             <p class= "title">
-                No canellation fees
+                No Cancellation Fee
             </p>
-
+            <p>
+                VIP Cars offers free cancellation for car rentals
+            </p>
+        </div>
 
 </div>
