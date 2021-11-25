@@ -15,6 +15,9 @@
             <p class= "title">
                 Flexible rentals
             </p>
+            <p>
+            Cancel or change most bookings for free up to 48 hours before pick-up
+            </p>
         </div>
         <div class="col-4 icon-column">
             <i class="fas fa-shield-alt fa-3x icon-theme"></i>
