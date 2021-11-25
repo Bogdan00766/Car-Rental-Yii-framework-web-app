@@ -57,6 +57,9 @@
 
         <div class="col-4 icon-column">
             <i class="fas fa-share-alt fa-3x icon-theme"></i>
+            <p class= "title">
+                Clean cars. Flexible bookings. Socially distant rental counters.
+            </p>
 
 
 
