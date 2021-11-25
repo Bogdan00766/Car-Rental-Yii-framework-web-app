@@ -60,7 +60,10 @@
             <p class= "title">
                 Clean cars. Flexible bookings. Socially distant rental counters.
             </p>
-
+            <p>
+                We’re working with our partners to keep you safe and in the driving seat.
+            </p>
+        </div>
 
 
 </div>
