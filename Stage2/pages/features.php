@@ -1,9 +1,5 @@
-features gxfvccfhghgfchgfch
-
-now I changed this file and you made Update
-
-gchgfhgvjhgigu
-bhiuh
-iuhbiubhi
-container
-uyguyguyg
+<div class="container">
+    <div class="row">
+        We offer a complete range of features
+    </div>
+</div>
