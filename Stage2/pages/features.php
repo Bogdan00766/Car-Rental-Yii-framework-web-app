@@ -65,6 +65,7 @@
         </div>
 
         <div class ="col-4 icon-column">
+            <i class="fas fa-database fa-3x icon-theme"></i>
 
 
 </div>
