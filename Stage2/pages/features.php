@@ -10,14 +10,14 @@
 
 
     <div class="row">
-        <div class ="col-4">
+        <div class ="col-4 icon-column">
             <i class="fas fa-shopping-cart fa-3x icon-theme"></i>
         </div>
-        <div class="col-4">
-            <i class="fas fa-shopping-cart fa-3x icon-theme"></i>
+        <div class="col-4 icon-column">
+            <i class="fas fa-shield-alt fa-3x icon-theme"></i>
 
         </div>
-        <div class ="col-4">
+        <div class ="col-4 icon-column">
             <i class="fas fa-shopping-cart fa-3x icon-theme"></i>
         </div>
 
