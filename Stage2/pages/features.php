@@ -52,5 +52,11 @@
             <p>
                 Rent a car with pricing inclusive of CDW, Theft Waiver, Unlimited Mileage etc.
             </p>
+        </div>
+
+
+        <div class="col-4 icon-column">
+
+
 
 </div>
