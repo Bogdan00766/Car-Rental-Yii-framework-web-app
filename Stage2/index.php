@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="css/home_style.css">
     <link rel="stylesheet" href="css/vehicles_style.css">
     <link rel="stylesheet" href="css/features_style.css">
+    <link rel="stylesheet" href="vendor/fortawesome/font-awesome/css/all.css">
+
 </head>
 <body>
     <div class="container-fluid header">
