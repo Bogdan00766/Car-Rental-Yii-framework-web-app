@@ -12,6 +12,9 @@
     <div class="row">
         <div class ="col-4 icon-column">
             <i class="fas fa-shopping-cart fa-3x icon-theme"></i>
+            <p class= "title">
+                Flexible rentals
+            </p>
         </div>
         <div class="col-4 icon-column">
             <i class="fas fa-shield-alt fa-3x icon-theme"></i>
