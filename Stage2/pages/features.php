@@ -54,7 +54,6 @@
             </p>
         </div>
 
-
         <div class="col-4 icon-column">
             <i class="fas fa-share-alt fa-3x icon-theme"></i>
             <p class= "title">
@@ -64,6 +63,8 @@
                 We’re working with our partners to keep you safe and in the driving seat.
             </p>
         </div>
+
+        <div class ="col-4 icon-column">
 
 
 </div>
