@@ -45,5 +45,6 @@
 
     <div class="row">
         <div class ="col-4 icon-column">
+            <i class="fas fa-paper-plane fa-3x icon-theme"></i>
 
 </div>
