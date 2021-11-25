@@ -1,6 +1,7 @@
 {
   "require": {
     "twbs/bootstrap": "4.6",
-    "components/jquery": "^3.6"
+    "components/jquery": "^3.6",
+    "fortawesome/font-awesome": "^5"
   }
 }
