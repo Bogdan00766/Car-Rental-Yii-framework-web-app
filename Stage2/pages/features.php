@@ -33,6 +33,9 @@
             <p class= "title">
                 No hidden fees
             </p>
+            <p>
+                Know exactly what you are paying
+            </p>
         </div>
 
     </div>
