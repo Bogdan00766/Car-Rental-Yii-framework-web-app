@@ -29,6 +29,10 @@
             <p class="vehicles-text">
                 Mini
             </p>
+            <div class ="col-fluid-3"> </div>
+            <p class="vehicles-text">
+                Economy
+            </p>
 
         </div>
         </div>
