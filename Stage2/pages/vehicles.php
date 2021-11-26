@@ -37,10 +37,12 @@
             </p>
             </div>
 
-            <div class ="col-fluid-3"> </div>
+            <div class ="col-fluid-3">
             <p class="vehicles-text2">
                 Compact
             </p>
+            </div>
+
             <div class ="col-fluid-3"> </div>
             <p class="vehicles-text2">
                 Full size
