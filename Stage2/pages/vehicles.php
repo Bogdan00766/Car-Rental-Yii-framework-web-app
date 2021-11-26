@@ -24,7 +24,13 @@
     </div>
 
     <div class="container-fluid">
+        <div class="row features-row">
+            <div class ="col-fluid-3"> </div>
+            <p class="vehicles-text">
+                Mini
+            </p>
 
+        </div>
         </div>
 
 
