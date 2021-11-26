@@ -24,11 +24,17 @@
             <p class="vehicles-text2">
                 Economy
             </p>
+            <p class="vehicles-text3">
+                Toyota Yaris or similar
+            </p>
         </div>
         <div class ="col-fluid-3">
             <img class="image" src="photos/gray more small.webp">
             <p class="vehicles-text2">
                 Compact
+            </p>
+            <p class="vehicles-text3">
+                Citroen C4 Cactus or similar
             </p>
         </div>
         <div class ="col-fluid-3">
