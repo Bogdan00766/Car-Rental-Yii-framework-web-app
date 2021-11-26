@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row home-main-row">
-        <div class="col-6">
+        <div class="col-5">
             <p class="home-title">
                 We help you find the best solution
             </p>
@@ -10,7 +10,7 @@
             </p>
         </div>
 
-        <div class="col-4">
+        <div class="col-7">
             <img class="home-image" src="photos/gray-car-pic.jpg">
 
         </div>
