@@ -9,6 +9,18 @@
 
 
     <div class="row">
+        <div class ="col-3"> </div>
+        <img class="image" src="photos/red-car-pic.webp">
 
+        <div class="col-3"> </div>
+        <img class="image" src="photos/blu car more small.webp">
+
+        <div class ="col-3"> </div>
+        <img class="image" src="photos/gray more small.webp">
+
+        <div class ="col-3"> </div>
+        <img class="image" src="photos/black small audi more.webp">
 
     </div>
+
+
