@@ -37,9 +37,12 @@
             <p class="vehicles-text">
                 Compact
             </p>
-
-
+            <div class ="col-fluid-3"> </div>
+            <p class="vehicles-text">
+                Full size
+            </p>
         </div>
         </div>
+
 
 
