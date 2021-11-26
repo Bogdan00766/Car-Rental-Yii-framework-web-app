@@ -14,6 +14,9 @@
             <p class="vehicles-text2">
                 Mini
             </p>
+            <p class="vehicles-text3">
+                Fiat Panda or similar
+            </p>
 
         </div>
         <div class="col-fluid-3">
