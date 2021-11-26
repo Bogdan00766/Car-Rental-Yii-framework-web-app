@@ -6,7 +6,7 @@
         </div>
 
         <div class="col-4">
-            TEST
+            <img class="home-image" src="photos/gray-car-pic.jpg">
 
         </div>
     </div>
