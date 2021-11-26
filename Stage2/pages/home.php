@@ -1,12 +1,12 @@
 <div class="container">
-    <div class="row">
+    <div class="row home-main-row">
         <div class="col-6">
-            TEsT
+            <p class="home-title">We help you find the best solution</p>
 
         </div>
 
-        <div class="col-4>
-
+        <div class="col-4">
+            TEST
 
         </div>
     </div>
