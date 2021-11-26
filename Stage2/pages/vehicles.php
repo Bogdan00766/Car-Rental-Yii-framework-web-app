@@ -44,8 +44,6 @@
             </p>
             <p class="vehicles-text3">
                 Citroen C4 Cactus or similar
-            </p> <p class="vehicles-text3">
-                Citroen C4 Cactus or similar
             </p>
         </div>
     </div>
