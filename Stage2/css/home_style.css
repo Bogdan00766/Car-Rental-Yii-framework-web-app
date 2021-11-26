@@ -15,9 +15,11 @@
 .home-image{
     width: 100%;
     height: auto;
-    margin-bottom:50px;
+    margin-bottom:150px;
 }
 
 .home-text{
     text-align: justify;
+    padding-top: 10px ;
+    padding-bottom: 30px ;
 }
