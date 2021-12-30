@@ -2,103 +2,72 @@
 
 namespace app\models;
 
-class User extends \yii\base\BaseObject implements \yii\web\IdentityInterface
+use Yii;
+
+/**
+ * This is the model class for table "User".
+ *
+ * @property string $Email
+ * @property string $Password
+ * @property string $Create_time
+ * @property int $Status
+ * @property string $Name
+ * @property string $Last_name
+ * @property string|null $Birth_year
+ * @property int|null $IsAdmin
+ *
+ * @property Client $client
+ */
+class User extends \yii\db\ActiveRecord
 {
-    public $id;
-    public $username;
-    public $password;
-    public $authKey;
-    public $accessToken;
-
-    private static $users = [
-        '100' => [
-            'id' => '100',
-            'username' => 'admin',
-            'password' => 'admin',
-            'authKey' => 'test100key',
-            'accessToken' => '100-token',
-        ],
-        '101' => [
-            'id' => '101',
-            'username' => 'demo',
-            'password' => 'demo',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
-    ];
-
-
     /**
      * {@inheritdoc}
      */
-    public static function findIdentity($id)
+    public static function tableName()
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        return 'User';
     }
 
     /**
      * {@inheritdoc}
      */
-    public static function findIdentityByAccessToken($token, $type = null)
+    public function rules()
     {
-        foreach (self::$users as $user) {
-            if ($user['accessToken'] === $token) {
-                return new static($user);
-            }
-        }
-
-        return null;
+        return [
+            [['Email', 'Password', 'Name', 'Last_name'], 'required'],
+            [['Create_time'], 'safe'],
+            [['Status', 'IsAdmin'], 'integer'],
+            [['Email'], 'string', 'max' => 255],
+            [['Password'], 'string', 'max' => 32],
+            [['Name', 'Last_name', 'Birth_year'], 'string', 'max' => 45],
+            [['Email'], 'unique'],
+        ];
     }
 
     /**
-     * Finds user by username
+     * {@inheritdoc}
+     */
+    public function attributeLabels()
+    {
+        return [
+            'Email' => 'Email',
+            'Password' => 'Password',
+            'Create_time' => 'Create Time',
+            'Status' => 'Status',
+            'Name' => 'Name',
+            'Last_name' => 'Last Name',
+            'Birth_year' => 'Birth Year',
+            'IsAdmin' => 'Is Admin',
+        ];
+    }
+
+    /**
+     * Gets query for [[Client]].
      *
-     * @param string $username
-     * @return static|null
+     * @return \yii\db\ActiveQuery
      */
-    public static function findByUsername($username)
+    public function getClient()
     {
-        foreach (self::$users as $user) {
-            if (strcasecmp($user['username'], $username) === 0) {
-                return new static($user);
-            }
-        }
-
-        return null;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getId()
-    {
-        return $this->id;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function getAuthKey()
-    {
-        return $this->authKey;
-    }
-
-    /**
-     * {@inheritdoc}
-     */
-    public function validateAuthKey($authKey)
-    {
-        return $this->authKey === $authKey;
-    }
-
-    /**
-     * Validates password
-     *
-     * @param string $password password to validate
-     * @return bool if password provided is valid for current user
-     */
-    public function validatePassword($password)
-    {
-        return $this->password === $password;
+        return $this->hasOne(Client::className(), ['User_email' => 'Email']);
     }
 }
