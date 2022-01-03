@@ -2,7 +2,6 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
@@ -31,7 +30,7 @@ AppAsset::register($this);
         'brandLabel' => 'GO<br>KART',
         'brandUrl' => Yii::$app->homeUrl,
         'options' => [
-            'class' => 'navbar navbar-expand-lg navbar-css fixed-top',
+            'class' => 'navbar navbar-expand-lg navbar-css',
         ],
     ]);
     echo Nav::widget([
@@ -46,7 +45,7 @@ AppAsset::register($this);
                 '<li>'
                 . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
                 . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
+                    'Logout (' . Yii::$app->user->identity->username. ')',
                     ['class' => 'btn btn-link logout']
                 )
                 . Html::endForm()
