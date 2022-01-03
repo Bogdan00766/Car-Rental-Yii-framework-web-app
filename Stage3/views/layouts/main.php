@@ -48,9 +48,9 @@ AppAsset::register($this);
                 <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <div class="navbar-nav">
 
-                        <a class="nav-link navbar-element <?php if($page=='index' || is_null($page)) echo("active")?>" href="index.php?r=site/index">Home</a>
-                        <a class="nav-link navbar-element <?php if($page=='features') echo("active")?>" href="index.php?r=site/features">Features</a>
-                        <a class="nav-link navbar-element <?php if($page=='vehicles') echo("active")?>" href="index.php?r=site/vehicles">Vehicles</a>
+                        <a class="nav-link navbar-element <?php if($page=='site/index' || is_null($page)) echo("active")?>" href="index.php?r=site/index">Home</a>
+                        <a class="nav-link navbar-element <?php if($page=='site/features') echo("active")?>" href="index.php?r=site/features">Features</a>
+                        <a class="nav-link navbar-element <?php if($page=='site/vehicles') echo("active")?>" href="index.php?r=site/vehicles">Vehicles</a>
                     </div>
                 </div>
             </nav>

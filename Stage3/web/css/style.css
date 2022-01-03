@@ -56,4 +56,9 @@
     color: rgb(75,112,183);
     font-weight: bolder;
 }
-
+.login-padding{
+    padding-top: 40px;
+}
+.custom-control{
+    color: rgb(75,112,183);
+}
