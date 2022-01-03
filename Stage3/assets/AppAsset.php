@@ -24,12 +24,13 @@ class AppAsset extends AssetBundle
         'css/features_style.css',
         'css/home_style.css',
         'css/style.css',
-        'scc/vehicles_style.css',
+        'css/vehicles_style.css',
     ];
     public $js = [
     ];
     public $depends = [
         'yii\web\YiiAsset',
         'yii\bootstrap4\BootstrapAsset',
+        'rmrevin\yii\fontawesome\AssetBundle',
     ];
 }

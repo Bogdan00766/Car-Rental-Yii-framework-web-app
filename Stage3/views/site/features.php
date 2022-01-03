@@ -1,3 +1,9 @@
+<?php
+
+/* @var $this yii\web\View */
+
+$this->title = 'Features';
+?>
 <div class="container">
     <div class="row features-row">
         <div class ="col-4"> </div>

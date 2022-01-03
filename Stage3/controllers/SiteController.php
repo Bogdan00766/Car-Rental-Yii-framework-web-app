@@ -125,4 +125,8 @@ class SiteController extends Controller
     {
         return $this->render('vehicles.php');
     }
+    public function actionFeatures()
+    {
+        return $this->render('features.php');
+    }
 }
