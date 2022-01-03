@@ -1,0 +1,24 @@
+.features-text{
+    font-size: 28px;
+    font-weight: bolder;
+    text-align: center;
+}
+.features-row{
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+.icon-theme{
+color: rgb(129,155,204);
+}
+
+.icon-column{
+    text-align: center;
+}
+
+.title{
+    margin-top: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    text-align: center;
+}
