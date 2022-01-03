@@ -2,6 +2,7 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
+/* @var $page string */
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
@@ -17,45 +18,49 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <?php
+    $page = "index";
+    $file = "site/index";
+    if(isset($_GET["r"])) {
+        $page = $_GET['r'];
+        $f = "site/$page";
+        if(file_exists($f)){
+            $file = $f;
+        }
+    }
+    ?>
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
 <?php $this->beginBody() ?>
+<div class="container-fluid header">
+    <div class="row">
+        <div class="col-sm-3 gokart-col">
+            <a href="index.php?r=index">GO<br>KART</a>
 
-<header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => 'GO<br>KART',
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-lg navbar-css',
-        ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav navbar navbar-expand-lg navbar-css'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'Features', 'url' => ['/site/features']],
-            ['label' => 'Vehicles', 'url' => ['/site/vehicles']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username. ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-</header>
+        </div>
+
+        <div class="col-sm-7 navbar-col">
+
+            <nav class="navbar navbar-expand-lg navbar-css">
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav">
+
+                        <a class="nav-link navbar-element <?php if($page=='index' || is_null($page)) echo("active")?>" href="index.php?r=site/index">Home</a>
+                        <a class="nav-link navbar-element <?php if($page=='features') echo("active")?>" href="index.php?r=site/features">Features</a>
+                        <a class="nav-link navbar-element <?php if($page=='vehicles') echo("active")?>" href="index.php?r=site/vehicles">Vehicles</a>
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+        <div class="col-sm-2 login-button">
+            <a class="btn btn-primary" href="index.php?r=site/login">Log In</a>
+        </div>
+    </div>
+</div>
 
 <main role="main" class="flex-shrink-0">
     <div class="container">
