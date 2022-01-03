@@ -121,8 +121,8 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionVehicles()
     {
-        return $this->render('about');
+        return $this->render('vehicles.php');
     }
 }
