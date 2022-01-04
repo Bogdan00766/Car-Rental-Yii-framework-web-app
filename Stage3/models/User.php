@@ -19,7 +19,7 @@ use Yii;
  *
  * @property Client[] $clients
  */
-class User extends \yii\db\ActiveRecord
+class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
 {
     /**
      * {@inheritdoc}
@@ -74,7 +74,7 @@ class User extends \yii\db\ActiveRecord
                 "Id" => $id
             ])
             ->one();
-        if (!count($User)) {
+        if ($User === null) {
             return null;
         }
         return new static($User);

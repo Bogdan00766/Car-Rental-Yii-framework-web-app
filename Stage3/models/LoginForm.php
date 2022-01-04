@@ -71,7 +71,7 @@ class LoginForm extends Model
     /**
      * Finds user by [[username]]
      *
-     * @return User|null
+     * @return yii\web\IdentityInterface
      */
     public function getUser()
     {
