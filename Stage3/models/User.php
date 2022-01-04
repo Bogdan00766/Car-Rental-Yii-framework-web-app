@@ -9,14 +9,15 @@ use Yii;
  *
  * @property string $Email
  * @property string $Password
- * @property string $Create_time
- * @property int $Status
- * @property string $Name
- * @property string $Last_name
- * @property string|null $Birth_year
- * @property int|null $IsAdmin
+ * @property string|null $Create_time
+ * @property string $authKey
+ * @property string|null $username
+ * @property string|null $Last_name
+ * @property string|null $accessToken
+ * @property int $IsAdmin
+ * @property int $Id
  *
- * @property Client $client
+ * @property Client[] $clients
  */
 class User extends \yii\db\ActiveRecord
 {
@@ -34,12 +35,12 @@ class User extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Email', 'Password', 'Name', 'Last_name'], 'required'],
+            [['Email', 'Password', 'authKey'], 'required'],
             [['Create_time'], 'safe'],
-            [['Status', 'IsAdmin'], 'integer'],
-            [['Email'], 'string', 'max' => 255],
+            [['IsAdmin'], 'integer'],
+            [['Email', 'authKey', 'accessToken'], 'string', 'max' => 255],
             [['Password'], 'string', 'max' => 32],
-            [['Name', 'Last_name', 'Birth_year'], 'string', 'max' => 45],
+            [['username', 'Last_name'], 'string', 'max' => 45],
             [['Email'], 'unique'],
         ];
     }
@@ -53,21 +54,73 @@ class User extends \yii\db\ActiveRecord
             'Email' => 'Email',
             'Password' => 'Password',
             'Create_time' => 'Create Time',
-            'Status' => 'Status',
-            'Name' => 'Name',
+            'authKey' => 'Auth Key',
+            'username' => 'Username',
             'Last_name' => 'Last Name',
-            'Birth_year' => 'Birth Year',
+            'accessToken' => 'Access Token',
             'IsAdmin' => 'Is Admin',
+            'Id' => 'ID',
         ];
     }
 
     /**
-     * Gets query for [[Client]].
+     * Gets query for [[Clients]].
      *
-     * @return \yii\db\ActiveQuery
+     * @return User
      */
-    public function getClient()
+    public static function findIdentity($id) {
+        $User = User::find()
+            ->where([
+                "Id" => $id
+            ])
+            ->one();
+        if (!count($User)) {
+            return null;
+        }
+        return new static($User);
+    }
+
+    public function getId() {
+        return $this->Id;
+    }
+
+    public static function findIdentityByAccessToken($token, $type = null) {
+
+        $User = User::find()
+            ->where(["accessToken" => $token])
+            ->one();
+        if (!count($User)) {
+            return null;
+        }
+        return new static($User);
+    }
+
+    public static function findByUsername($username) {
+        $User = User::find()
+            ->where([
+                "username" => $username
+            ])
+            ->one();
+        if ($User === null) {
+            return null;
+        }
+        return new static($User);
+    }
+
+    public function getAuthKey() {
+        return $this->authKey;
+    }
+
+    public function validateAuthKey($authKey) {
+        return $this->authKey === $authKey;
+    }
+
+    public function validatePassword($password) {
+        return $this->Password === $password;
+    }
+
+    public function getClients()
     {
-        return $this->hasOne(Client::className(), ['User_email' => 'Email']);
+        return $this->hasMany(Client::className(), ['User_email' => 'Email']);
     }
 }
