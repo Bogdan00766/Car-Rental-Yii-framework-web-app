@@ -34,33 +34,29 @@ AppAsset::register($this);
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
+
 <?php $this->beginBody() ?>
-<div class="container-fluid header">
-    <div class="row">
-        <div class="col-sm-3 gokart-col">
-            <a href="index.php?r=index">GO<br>KART</a>
 
-        </div>
+<?php
+NavBar::begin(['brandLabel' => 'GO<br>KART']);
+echo Nav::widget([
+    'items' => [
+        ['label' => 'Home', 'url' => ['site/index']],
+        ['label' => 'Features', 'url' => ['site/features']],
+        ['label' => 'Vehicles', 'url' => ['site/vehicles']],
 
-        <div class="col-sm-7 navbar-col">
+        Yii::$app->user->isGuest ? (
+        ['label' => 'Login', 'url' => ['/site/login']]
+        ) : (
+            ['label' => 'Sign out (' . Yii::$app->user->identity->username . ')', 'url' => ['site/logout'], 'linkOptions' => ['data-method' => 'post']]
+        )
 
-            <nav class="navbar navbar-expand-lg navbar-css">
-                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div class="navbar-nav">
+    ],
+    'options' => ['class' => 'navbar-nav'],
+]);
+NavBar::end();
 
-                        <a class="nav-link navbar-element <?php if($page=='site/index' || is_null($page)) echo("active")?>" href="index.php?r=site/index">Home</a>
-                        <a class="nav-link navbar-element <?php if($page=='site/features') echo("active")?>" href="index.php?r=site/features">Features</a>
-                        <a class="nav-link navbar-element <?php if($page=='site/vehicles') echo("active")?>" href="index.php?r=site/vehicles">Vehicles</a>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="col-sm-2 login-button">
-            <a class="btn btn-primary" href="index.php?r=site/login">Log In</a>
-        </div>
-    </div>
-</div>
+?>
 
 <main role="main" class="flex-shrink-0">
     <div class="container">
