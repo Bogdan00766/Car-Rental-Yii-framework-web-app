@@ -43,11 +43,11 @@ echo Nav::widget([
     'items' => [
         ['label' => 'Home', 'url' => ['site/index']],
         ['label' => 'Features', 'url' => ['site/features']],
-        ['label' => 'Features', 'url' => ['site/vehicles']],
+        ['label' => 'Vehicles', 'url' => ['site/vehicles']],
         [
                 'label' => 'Admin', 'url' => ['#'], 'visible'=> Yii::$app->user->can('admin'),
                 'items' => [
-                    ['label' => 'Home', 'url' => ['site/index']],
+                    ['label' => 'Engine', 'url' => ['/engine']],
                 ],
         ],
 

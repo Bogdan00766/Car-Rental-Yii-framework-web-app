@@ -19,7 +19,7 @@ $this->title = 'Home';
         </div>
 
         <div class="col-7">
-            <img class="home-image" src="photos/gray-car-pic.jpg">
+            <img class="home-image" src="/photos/gray-car-pic.jpg">
 
         </div>
     </div>
