@@ -80,12 +80,6 @@ class SiteController extends Controller
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
 
-            \app\models\User()->f;
-            $user->
-            if(this->User->$model->username === 1)try {
-                Yii::$app->authManager->assign('admin', Yii::$app->user->id);
-            } catch (\Exception $e) {
-            }
             return $this->goBack();
         }
 

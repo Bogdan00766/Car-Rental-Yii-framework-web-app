@@ -1,24 +1,24 @@
 <?php
 
-use app\models\Car;
+use app\models\Engine;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\Search\CarSearch */
+/* @var $searchModel app\models\Search\EngineSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Cars';
+$this->title = 'Engines';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="car-index">
+<div class="engine-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Create Car', ['create'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Create Engine', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -30,17 +30,15 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'VIN',
-            'Brand',
-            'Model',
-            'Color',
-            'Seats',
-            //'Status',
-            //'Engine_Id',
+            'Id',
+            'Serial_Number',
+            'Fuel',
+            'Power',
+            'Cylinders',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Car $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'VIN' => $model->VIN]);
+                'urlCreator' => function ($action, Engine $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'Id' => $model->Id]);
                  }
             ],
         ],
