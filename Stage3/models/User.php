@@ -123,4 +123,10 @@ class User extends \yii\db\ActiveRecord implements \yii\web\IdentityInterface
     {
         return $this->hasMany(Client::className(), ['User_email' => 'Email']);
     }
+
+    public function isAdmin()
+    {
+        if($this->IsAdmin === 1) return 1;
+        else return 0;
+    }
 }

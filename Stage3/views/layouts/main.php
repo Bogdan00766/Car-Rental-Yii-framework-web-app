@@ -43,12 +43,12 @@ echo Nav::widget([
     'items' => [
         ['label' => 'Home', 'url' => ['site/index']],
         ['label' => 'Features', 'url' => ['site/features']],
-        ['label' => 'Vehicles', 'url' => ['site/vehicles']],
+        ['label' => 'Vehicles', 'url' => ['site/vehicles'], 'visible'=> Yii::$app->user->can('admin')],
 
         Yii::$app->user->isGuest ? (
         ['label' => 'Login', 'url' => ['/site/login']]
         ) : (
-            ['label' => 'Sign out (' . Yii::$app->user->identity->username . ')', 'url' => ['site/logout'], 'linkOptions' => ['data-method' => 'post']]
+            ['label' => 'Log out (' . Yii::$app->user->identity->username . ')', 'url' => ['site/logout'], 'linkOptions' => ['data-method' => 'post']]
         )
 
     ],

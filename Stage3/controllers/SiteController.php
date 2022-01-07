@@ -3,12 +3,14 @@
 namespace app\controllers;
 
 use Yii;
+use yii\base\Model;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
+use yii\web\User;
 
 class SiteController extends Controller
 {
@@ -77,6 +79,13 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
+            \app\models\User()->f;
+            $user->
+            if(this->User->$model->username === 1)try {
+                Yii::$app->authManager->assign('admin', Yii::$app->user->id);
+            } catch (\Exception $e) {
+            }
             return $this->goBack();
         }
 
