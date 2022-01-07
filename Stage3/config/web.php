@@ -20,8 +20,7 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'class' => 'amnah\yii2\user\components\User',
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -50,6 +49,14 @@ $config = [
             ],
         ],
     ],
+    'modules' => [
+        'user' => [
+            'class' => 'amnah\yii2\user\Module',
+            'requireEmail' => false,
+            'requireUsername' => true
+
+        ]
+        ],
     'params' => $params,
 ];
 
