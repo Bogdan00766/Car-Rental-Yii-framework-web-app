@@ -3,17 +3,15 @@
 namespace app\controllers;
 
 use app\models\Address;
-use app\models\Client;
-use app\models\search\ClientSearch;
-use yii\filters\AccessControl;
+use app\models\search\AddressSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ClientController implements the CRUD actions for Client model.
+ * AddressController implements the CRUD actions for Address model.
  */
-class ClientController extends Controller
+class AddressController extends Controller
 {
     /**
      * @inheritDoc
@@ -23,21 +21,6 @@ class ClientController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-                'access' => [
-                    'class' => AccessControl::class,
-                    'rules' => [
-                        [
-                            'allow' => true,
-                            'actions' => ['index', 'view', 'create','update', 'delete'],
-                            'roles' => ['admin'],
-                        ],
-                        [
-                            'allow' => true,
-                            'actions' => ['create'],
-                            'roles' => ['@'],
-                        ]
-                    ],
-                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -49,13 +32,13 @@ class ClientController extends Controller
     }
 
     /**
-     * Lists all Client models.
+     * Lists all Address models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new ClientSearch();
+        $searchModel = new AddressSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -65,7 +48,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Displays a single Client model.
+     * Displays a single Address model.
      * @param int $id ID
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
@@ -78,14 +61,13 @@ class ClientController extends Controller
     }
 
     /**
-     * Creates a new Client model.
+     * Creates a new Address model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Client();
-
+        $model = new Address();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
@@ -101,7 +83,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Updates an existing Client model.
+     * Updates an existing Address model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param int $id ID
      * @return string|\yii\web\Response
@@ -121,7 +103,7 @@ class ClientController extends Controller
     }
 
     /**
-     * Deletes an existing Client model.
+     * Deletes an existing Address model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param int $id ID
      * @return \yii\web\Response
@@ -135,15 +117,15 @@ class ClientController extends Controller
     }
 
     /**
-     * Finds the Client model based on its primary key value.
+     * Finds the Address model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param int $id ID
-     * @return Client the loaded model
+     * @return Address the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Client::findOne(['id' => $id])) !== null) {
+        if (($model = Address::findOne(['id' => $id])) !== null) {
             return $model;
         }
 
