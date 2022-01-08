@@ -2,13 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\ContactForm;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
-use app\models\LoginForm;
-use app\models\ContactForm;
+
 
 class SiteController extends Controller
 {
@@ -77,6 +77,7 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
+
             return $this->goBack();
         }
 
@@ -121,8 +122,12 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionAbout()
+    public function actionVehicles()
     {
-        return $this->render('about');
+        return $this->render('vehicles.php');
+    }
+    public function actionFeatures()
+    {
+        return $this->render('features.php');
     }
 }
