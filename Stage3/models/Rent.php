@@ -3,19 +3,19 @@
 namespace app\models;
 
 use Yii;
+use yii\web\User;
 
 /**
  * This is the model class for table "Rent".
  *
  * @property int $Id
- * @property int $Client_Id
- * @property string $Car_VIN
- * @property string $Rent_start
- * @property string $Rent_end
+ * @property string|null $Car_VIN
+ * @property string|null $RentTime
+ * @property int $user_id
  *
  * @property Car $carVIN
- * @property Client $client
  * @property Issue[] $issues
+ * @property User $user
  */
 class Rent extends \yii\db\ActiveRecord
 {
@@ -33,12 +33,12 @@ class Rent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['Client_Id', 'Car_VIN', 'Rent_end'], 'required'],
-            [['Client_Id'], 'integer'],
-            [['Rent_start', 'Rent_end'], 'safe'],
+            [['user_id'], 'required'],
+            [['user_id'], 'integer'],
             [['Car_VIN'], 'string', 'max' => 11],
-            [['Client_Id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['Client_Id' => 'Id']],
+            [['RentTime'], 'string', 'max' => 45],
             [['Car_VIN'], 'exist', 'skipOnError' => true, 'targetClass' => Car::className(), 'targetAttribute' => ['Car_VIN' => 'VIN']],
+            [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
         ];
     }
 
@@ -49,10 +49,9 @@ class Rent extends \yii\db\ActiveRecord
     {
         return [
             'Id' => 'ID',
-            'Client_Id' => 'Client  ID',
-            'Car_VIN' => 'Car  Vin',
-            'Rent_start' => 'Rent Start',
-            'Rent_end' => 'Rent End',
+            'Car_VIN' => 'Car Vin',
+            'RentTime' => 'Rent Time',
+            'user_id' => 'User ID',
         ];
     }
 
@@ -67,16 +66,6 @@ class Rent extends \yii\db\ActiveRecord
     }
 
     /**
-     * Gets query for [[Client]].
-     *
-     * @return \yii\db\ActiveQuery
-     */
-    public function getClient()
-    {
-        return $this->hasOne(Client::className(), ['Id' => 'Client_Id']);
-    }
-
-    /**
      * Gets query for [[Issues]].
      *
      * @return \yii\db\ActiveQuery
@@ -84,5 +73,15 @@ class Rent extends \yii\db\ActiveRecord
     public function getIssues()
     {
         return $this->hasMany(Issue::className(), ['Rent_Id' => 'Id']);
+    }
+
+    /**
+     * Gets query for [[User]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getUser()
+    {
+        return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
 }
