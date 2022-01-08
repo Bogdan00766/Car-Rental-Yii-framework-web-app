@@ -14,13 +14,14 @@ $config = [
     'components' => [
         'request' => [
             // !!! insert a secret key in the following (if it is empty) - this is required by cookie validation
-            'cookieValidationKey' => 'CCdpvvpXuRw9TV4E7tN65YMH6MdfMGti',
+            'cookieValidationKey' => '97gbQtn2lexT1rvex79UwO-I7W68QitL',
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'class' => 'amnah\yii2\user\components\User',
+            'identityClass' => 'app\models\User',
+            'enableAutoLogin' => true,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -28,7 +29,7 @@ $config = [
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
             // send all mails to a file by default. You have to set
-            // 'useFileTransport' to false and configure a transport
+            // 'useFileTransport' to false and configure transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
         ],
@@ -42,21 +43,15 @@ $config = [
             ],
         ],
         'db' => $db,
+        /*
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
             ],
         ],
+        */
     ],
-    'modules' => [
-        'user' => [
-            'class' => 'amnah\yii2\user\Module',
-            'requireEmail' => false,
-            'requireUsername' => true
-
-        ]
-        ],
     'params' => $params,
 ];
 

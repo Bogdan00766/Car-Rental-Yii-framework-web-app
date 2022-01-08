@@ -3,14 +3,12 @@
 namespace app\controllers;
 
 use Yii;
-use yii\base\Model;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
-use yii\web\User;
 
 class SiteController extends Controller
 {
@@ -79,7 +77,6 @@ class SiteController extends Controller
 
         $model = new LoginForm();
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
-
             return $this->goBack();
         }
 
@@ -124,12 +121,8 @@ class SiteController extends Controller
      *
      * @return string
      */
-    public function actionVehicles()
+    public function actionAbout()
     {
-        return $this->render('vehicles.php');
-    }
-    public function actionFeatures()
-    {
-        return $this->render('features.php');
+        return $this->render('about');
     }
 }
