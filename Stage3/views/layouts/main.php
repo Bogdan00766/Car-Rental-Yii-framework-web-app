@@ -2,7 +2,7 @@
 
 /* @var $this \yii\web\View */
 /* @var $content string */
-
+/* @var $page string */
 use app\assets\AppAsset;
 use app\widgets\Alert;
 use yii\bootstrap4\Breadcrumbs;
@@ -18,45 +18,53 @@ AppAsset::register($this);
 <head>
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <?php
+    $page = "index";
+    $file = "site/index";
+    if(isset($_GET["r"])) {
+        $page = $_GET['r'];
+        $f = "site/$page";
+        if(file_exists($f)){
+            $file = $f;
+        }
+    }
+    ?>
     <?php $this->registerCsrfMetaTags() ?>
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
 <body class="d-flex flex-column h-100">
+
 <?php $this->beginBody() ?>
 
-<header>
-    <?php
-    NavBar::begin([
-        'brandLabel' => Yii::$app->name,
-        'brandUrl' => Yii::$app->homeUrl,
-        'options' => [
-            'class' => 'navbar navbar-expand-md navbar-dark bg-dark fixed-top',
+<?php
+NavBar::begin(['brandLabel' => 'GO<br>KART']);
+echo Nav::widget([
+    'items' => [
+        ['label' => 'Home', 'url' => ['site/index']],
+        ['label' => 'Features', 'url' => ['site/features']],
+        ['label' => 'Vehicles', 'url' => ['site/vehicles']],
+        ['label' => 'Report Issue', 'url' => ['issue/create'], 'visible'=> Yii::$app->user->can('client')],
+        [
+                'label' => 'Admin', 'url' => ['#'], 'visible'=> Yii::$app->user->can('admin'),
+                'items' => [
+                    ['label' => 'Engines', 'url' => ['/engine']],
+                    ['label' => 'Issues', 'url' => ['/issue']],
+                ],
         ],
-    ]);
-    echo Nav::widget([
-        'options' => ['class' => 'navbar-nav'],
-        'items' => [
-            ['label' => 'Home', 'url' => ['/site/index']],
-            ['label' => 'About', 'url' => ['/site/about']],
-            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => 'Login', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'form-inline'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link logout']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
-        ],
-    ]);
-    NavBar::end();
-    ?>
-</header>
+
+        Yii::$app->user->isGuest ? (
+        ['label' => 'Login', 'url' => ['/user/login']]
+        ) : (
+            ['label' => 'Log out (' . Yii::$app->user->identity->username . ')', 'url' => ['logout'], 'linkOptions' => ['data-method' => 'post']]
+        )
+
+    ],
+    'options' => ['class' => 'navbar-nav'],
+]);
+NavBar::end();
+
+?>
 
 <main role="main" class="flex-shrink-0">
     <div class="container">
