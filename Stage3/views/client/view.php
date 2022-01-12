@@ -1,12 +1,13 @@
 <?php
 
+use app\models\Address;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Client */
 
-$this->title = $model->id;
+$this->title = $model->username;
 $this->params['breadcrumbs'][] = ['label' => 'Clients', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -26,6 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
         ]) ?>
     </p>
 
+    <?php
+        $address = Address::find()->where(['id' => $model->address_id])->one();
+
+    ?>
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
@@ -33,8 +38,19 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'first_name',
             'last_name',
-            'address_id',
         ],
-    ]) ?>
 
+    ]) ?>
+    <h2><br>Address:</h2>
+    <?= DetailView::widget([
+        'model' => $address,
+        'attributes' => [
+            'id',
+            'street',
+            'city',
+            'postal_code',
+            'country'
+        ],
+
+    ]) ?>
 </div>

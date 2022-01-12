@@ -7,6 +7,7 @@ use amnah\yii2\user\models\User;
 use app\models\Client;
 use app\models\search\ClientSearch;
 use Yii;
+use yii\filters\AccessControl;
 use yii\rbac\Role;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
@@ -25,6 +26,21 @@ class ClientController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => false,
+                            'actions' => ['create'],
+                            'roles' => ['admin', 'client'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['index', 'update', 'delete', 'view'],
+                            'roles' => ['admin'],
+                        ]
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [

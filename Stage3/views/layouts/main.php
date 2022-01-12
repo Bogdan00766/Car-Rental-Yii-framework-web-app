@@ -50,13 +50,15 @@ echo Nav::widget([
                 'items' => [
                     ['label' => 'Engines', 'url' => ['/engine']],
                     ['label' => 'Issues', 'url' => ['/issue']],
+                    ['label' => 'Clients', 'url' => ['/client']],
+                    ['label' => 'Addresses', 'url' => ['/address']],
                 ],
         ],
 
         Yii::$app->user->isGuest ? (
         ['label' => 'Login', 'url' => ['/user/login']]
         ) : (
-            ['label' => 'Log out (' . Yii::$app->user->identity->username . ')', 'url' => ['logout'], 'linkOptions' => ['data-method' => 'post']]
+            ['label' => 'Log out (' . Yii::$app->user->identity->username . ')', 'url' => ['/site/logout'], 'linkOptions' => ['data-method' => 'post']]
         )
 
     ],
