@@ -14,7 +14,7 @@ $this->title = 'Home';
                 We are your Rent a Car that offers you the best vehicles, at the best prices, so that you have a peaceful stay.
                 We value the well-being and satisfaction of our customers and, therefore, from your arrival until your departure, we want you to feel like at home.
             </p>
-            <a class="btn btn-primary" href="index.php?r=site/vehicles">Find your car</a>
+            <a class="btn btn-primary" href="/site/vehicles">Find your car</a>
 
         </div>
 
