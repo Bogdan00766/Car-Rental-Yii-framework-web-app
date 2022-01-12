@@ -2,10 +2,12 @@
 
 namespace app\controllers;
 
-use app\models\Address;
+
+use amnah\yii2\user\models\User;
 use app\models\Client;
 use app\models\search\ClientSearch;
-use yii\filters\AccessControl;
+use Yii;
+use yii\rbac\Role;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -23,21 +25,6 @@ class ClientController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-                'access' => [
-                    'class' => AccessControl::class,
-                    'rules' => [
-                        [
-                            'allow' => true,
-                            'actions' => ['index', 'view', 'create','update', 'delete'],
-                            'roles' => ['admin'],
-                        ],
-                        [
-                            'allow' => true,
-                            'actions' => ['create'],
-                            'roles' => ['@'],
-                        ]
-                    ],
-                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -81,14 +68,28 @@ class ClientController extends Controller
      * Creates a new Client model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
+     * @throws \Exception
      */
     public function actionCreate()
     {
+        //if(empty($_GET["address_id"])) return $this->redirect(array('/client/create', 'address_id' => '0'));
         $model = new Client();
+        $address_id = $_GET["address_id"];
+        $model->address_id = $address_id;
 
+        $model->username = Yii::$app->user->identity['username'];;
+        $model->id = Yii::$app->user->identity->getId();
+        $thisId = Yii::$app->user->identity->getId();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                $thisUser = User::find()->where(['id' => $thisId])->one();
+                $thisUser->setAttribute('role_id', 3)  ;
+                $thisUser->save();
+                //Yii::$app->user->Identity(['role_id']) =;
+                //$var1 = User::find()->where('id' === Yii::$app->user->identity->getId())->one();
+                //$var1['role'] = 3;
+                //$var1->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -110,6 +111,7 @@ class ClientController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+        $model = new Client();
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
