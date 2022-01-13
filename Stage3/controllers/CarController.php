@@ -4,6 +4,9 @@ namespace app\controllers;
 
 use app\models\Car;
 use app\models\search\CarSearch;
+use Yii;
+use yii\filters\AccessControl;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -21,6 +24,21 @@ class CarController extends Controller
         return array_merge(
             parent::behaviors(),
             [
+                'access' => [
+                    'class' => AccessControl::class,
+                    'rules' => [
+                        [
+                            'allow' => true,
+                            'actions' => ['create', 'delete', 'update'],
+                            'roles' => ['admin'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['index','view'],
+                            'roles' => ['client', 'admin'],
+                        ]
+                    ],
+                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -36,9 +54,19 @@ class CarController extends Controller
      *
      * @return string
      */
+    public function actionRent()
+    {
+        $id = $_GET['id'];
+        $this->redirect(Url::to(['/rent/create?car_id='.$id]));
+        return;
+    }
+
     public function actionIndex()
     {
         $searchModel = new CarSearch();
+        if(Yii::$app->user->can('client')) {
+            $searchModel->setAttribute('status', 1);
+        }
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -49,14 +77,14 @@ class CarController extends Controller
 
     /**
      * Displays a single Car model.
-     * @param string $VIN Vin
+     * @param string $id id
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($VIN)
+    public function actionView($id)
     {
         return $this->render('view', [
-            'model' => $this->findModel($VIN),
+            'model' => $this->findModel($id),
         ]);
     }
 
