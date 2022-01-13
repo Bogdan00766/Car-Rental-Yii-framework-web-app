@@ -44,7 +44,14 @@ echo Nav::widget([
         ['label' => 'Home', 'url' => ['site/index']],
         ['label' => 'Features', 'url' => ['site/features']],
         ['label' => 'Vehicles', 'url' => ['site/vehicles']],
-        ['label' => 'Report Issue', 'url' => ['issue/create'], 'visible'=> Yii::$app->user->can('client')],
+
+        [
+                'label' => 'Issues', 'url' => ['#'], 'visible'=> Yii::$app->user->can('client'),
+                'items' => [
+                    ['label' => 'Report Issue', 'url' => ['issue/create']],
+                    ['label' => 'My issues', 'url' => ['issue/index?IssueSearch%5Bid%5D=' . Yii::$app->user->getId()]],
+                ],
+        ],
         [
                 'label' => 'Admin', 'url' => ['#'], 'visible'=> Yii::$app->user->can('admin'),
                 'items' => [

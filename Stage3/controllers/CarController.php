@@ -2,17 +2,16 @@
 
 namespace app\controllers;
 
-use app\models\Issue;
-use app\models\search\IssueSearch;
-use yii\filters\AccessControl;
+use app\models\Car;
+use app\models\search\CarSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * IssueController implements the CRUD actions for Issue model.
+ * CarController implements the CRUD actions for Car model.
  */
-class IssueController extends Controller
+class CarController extends Controller
 {
     /**
      * @inheritDoc
@@ -22,21 +21,6 @@ class IssueController extends Controller
         return array_merge(
             parent::behaviors(),
             [
-                'access' => [
-                    'class' => AccessControl::class,
-                    'rules' => [
-                        [
-                            'allow' => true,
-                            'actions' => ['index', 'view','update', 'delete'],
-                            'roles' => ['admin'],
-                        ],
-                        [
-                            'allow' => true,
-                            'actions' => ['create', 'index', 'view'],
-                            'roles' => ['client'],
-                        ]
-                    ],
-                ],
                 'verbs' => [
                     'class' => VerbFilter::className(),
                     'actions' => [
@@ -48,13 +32,13 @@ class IssueController extends Controller
     }
 
     /**
-     * Lists all Issue models.
+     * Lists all Car models.
      *
      * @return string
      */
     public function actionIndex()
     {
-        $searchModel = new IssueSearch();
+        $searchModel = new CarSearch();
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -64,30 +48,30 @@ class IssueController extends Controller
     }
 
     /**
-     * Displays a single Issue model.
-     * @param int $id ID
+     * Displays a single Car model.
+     * @param string $VIN Vin
      * @return string
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionView($id)
+    public function actionView($VIN)
     {
         return $this->render('view', [
-            'model' => $this->findModel($id),
+            'model' => $this->findModel($VIN),
         ]);
     }
 
     /**
-     * Creates a new Issue model.
+     * Creates a new Car model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return string|\yii\web\Response
      */
     public function actionCreate()
     {
-        $model = new Issue();
+        $model = new Car();
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['view', 'VIN' => $model->VIN]);
             }
         } else {
             $model->loadDefaultValues();
@@ -99,18 +83,18 @@ class IssueController extends Controller
     }
 
     /**
-     * Updates an existing Issue model.
+     * Updates an existing Car model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param int $id ID
+     * @param string $VIN Vin
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($id)
+    public function actionUpdate($VIN)
     {
-        $model = $this->findModel($id);
+        $model = $this->findModel($VIN);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['view', 'VIN' => $model->VIN]);
         }
 
         return $this->render('update', [
@@ -119,29 +103,29 @@ class IssueController extends Controller
     }
 
     /**
-     * Deletes an existing Issue model.
+     * Deletes an existing Car model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param int $id ID
+     * @param string $VIN Vin
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($id)
+    public function actionDelete($VIN)
     {
-        $this->findModel($id)->delete();
+        $this->findModel($VIN)->delete();
 
         return $this->redirect(['index']);
     }
 
     /**
-     * Finds the Issue model based on its primary key value.
+     * Finds the Car model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param int $id ID
-     * @return Issue the loaded model
+     * @param string $VIN Vin
+     * @return Car the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($id)
+    protected function findModel($VIN)
     {
-        if (($model = Issue::findOne(['id' => $id])) !== null) {
+        if (($model = Car::findOne(['VIN' => $VIN])) !== null) {
             return $model;
         }
 

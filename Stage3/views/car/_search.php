@@ -4,11 +4,11 @@ use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\search\IssueSearch */
+/* @var $model app\models\search\CarSearch */
 /* @var $form yii\widgets\ActiveForm */
 ?>
 
-<div class="issue-search">
+<div class="car-search">
 
     <?php $form = ActiveForm::begin([
         'action' => ['index'],
@@ -16,18 +16,23 @@ use yii\widgets\ActiveForm;
         'options' => [
             'data-pjax' => 1
         ],
+    ]); ?>
 
-    ]);
-        ?>
+    <?= $form->field($model, 'VIN') ?>
 
+    <?= $form->field($model, 'brand') ?>
 
-    <?= $form->field($model, 'id') ?>
+    <?= $form->field($model, 'model') ?>
 
-    <?= $form->field($model, 'explanation') ?>
+    <?= $form->field($model, 'color') ?>
 
-    <?= $form->field($model, 'car_VIN') ?>
+    <?= $form->field($model, 'seats') ?>
 
-    <?= $form->field($model, 'rent_id') ?>
+    <?php // echo $form->field($model, 'status') ?>
+
+    <?php // echo $form->field($model, 'engine_id') ?>
+
+    <?php // echo $form->field($model, 'id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

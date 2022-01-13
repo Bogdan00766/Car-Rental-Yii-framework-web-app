@@ -1,29 +1,24 @@
 <?php
 
-use app\models\Issue;
+use app\models\Car;
 use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
 /* @var $this yii\web\View */
-/* @var $searchModel app\models\search\IssueSearch */
+/* @var $searchModel app\models\search\CarSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = 'Issues';
+$this->title = 'Cars';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="issue-index">
+<div class="car-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-
-        <?php if(Yii::$app->user->can('client')) {
-        ?>
-            <?= Html::a('Create Issue', ['create'], ['class' => 'btn btn-success']); ?>
-
-        <?php } ?>
-
+        <?= Html::a('Create Car', ['create'], ['class' => 'btn btn-success']) ?>
     </p>
 
     <?php Pjax::begin(); ?>
@@ -35,14 +30,18 @@ $this->title = 'Issues';
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            'explanation',
-            'car_VIN',
-            'rent_id',
+            'VIN',
+            'brand',
+            'model',
+            'color',
+            'seats',
+            //'status',
+            //'engine_id',
+            //'id',
             [
                 'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Issue $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
+                'urlCreator' => function ($action, Car $model, $key, $index, $column) {
+                    return Url::toRoute([$action, 'VIN' => $model->VIN]);
                  }
             ],
         ],
