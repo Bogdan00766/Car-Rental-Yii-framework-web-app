@@ -41,10 +41,10 @@ AppAsset::register($this);
 NavBar::begin(['brandLabel' => 'GO<br>KART']);
 echo Nav::widget([
     'items' => [
-        ['label' => 'Home', 'url' => ['site/index']],
-        ['label' => 'Features', 'url' => ['site/features']],
-        ['label' => 'Vehicles', 'url' => ['site/vehicles']],
-
+        ['label' => 'Home', 'url' => ['/site/index']],
+        ['label' => 'Features', 'url' => ['/site/features']],
+        ['label' => 'Vehicles', 'url' => ['/site/vehicles'], 'visible' => Yii::$app->user->isGuest],
+        ['label' => 'Cars', 'url' => ['/car'], 'visible' => !Yii::$app->user->isGuest],
         [
                 'label' => 'Issues', 'url' => ['#'], 'visible'=> Yii::$app->user->can('client'),
                 'items' => [
