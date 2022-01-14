@@ -35,7 +35,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
             'id',
             'explanation',
-            'client_id',
+            [
+                'label' => 'Client_id',
+                'attribute' => 'client_id',
+                'visible' => Yii::$app->user->can('admin'),
+            ],
             'car_id',
             [
                 'class' => ActionColumn::className(),

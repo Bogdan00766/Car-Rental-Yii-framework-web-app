@@ -45,11 +45,12 @@ echo Nav::widget([
         ['label' => 'Features', 'url' => ['/site/features']],
         ['label' => 'Vehicles', 'url' => ['/site/vehicles'], 'visible' => Yii::$app->user->isGuest],
         ['label' => 'Cars', 'url' => ['/car'], 'visible' => !Yii::$app->user->isGuest],
+        ['label' => 'My rents', 'url' => ['/rent'], 'visible' => Yii::$app->user->can('client')],
         [
                 'label' => 'Issues', 'url' => ['#'], 'visible'=> Yii::$app->user->can('client'),
                 'items' => [
                     ['label' => 'Report Issue', 'url' => ['issue/create']],
-                    ['label' => 'My issues', 'url' => ['issue/index?IssueSearch%5Bid%5D=' . Yii::$app->user->getId()]],
+                    ['label' => 'My issues', 'url' => ['issue/index?IssueSearch%5Bid%5D=&IssueSearch%5Bexplanation%5D=&IssueSearch%5Bclient_id%5D=' . Yii::$app->user->getId()]], //I can do it better if I will have more time
                 ],
         ],
         [
@@ -58,7 +59,8 @@ echo Nav::widget([
                     ['label' => 'Engines', 'url' => ['/engine']],
                     ['label' => 'Issues', 'url' => ['/issue']],
                     ['label' => 'Clients', 'url' => ['/client']],
-                    ['label' => 'Addresses', 'url' => ['/address']],
+                    //['label' => 'Addresses', 'url' => ['/address']],
+                    ['label' => 'Rents', 'url' => ['/rent'],],
                 ],
         ],
 
