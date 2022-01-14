@@ -99,7 +99,7 @@ class CarController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
-                return $this->redirect(['view', 'VIN' => $model->VIN]);
+                return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
             $model->loadDefaultValues();
@@ -113,16 +113,16 @@ class CarController extends Controller
     /**
      * Updates an existing Car model.
      * If update is successful, the browser will be redirected to the 'view' page.
-     * @param string $VIN Vin
+     * @param int $id id
      * @return string|\yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionUpdate($VIN)
+    public function actionUpdate($id)
     {
-        $model = $this->findModel($VIN);
+        $model = $this->findModel($id);
 
         if ($this->request->isPost && $model->load($this->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'VIN' => $model->VIN]);
+            return $this->redirect(['view', 'id' => $model->id]);
         }
 
         return $this->render('update', [
@@ -133,13 +133,13 @@ class CarController extends Controller
     /**
      * Deletes an existing Car model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
-     * @param string $VIN Vin
+     * @param int $id id
      * @return \yii\web\Response
      * @throws NotFoundHttpException if the model cannot be found
      */
-    public function actionDelete($VIN)
+    public function actionDelete($id)
     {
-        $this->findModel($VIN)->delete();
+        $this->findModel($id)->delete();
 
         return $this->redirect(['index']);
     }
@@ -147,13 +147,13 @@ class CarController extends Controller
     /**
      * Finds the Car model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
-     * @param string $VIN Vin
+     * @param int $id id
      * @return Car the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
-    protected function findModel($VIN)
+    protected function findModel($id)
     {
-        if (($model = Car::findOne(['VIN' => $VIN])) !== null) {
+        if (($model = Car::findOne(['id' => $id])) !== null) {
             return $model;
         }
 

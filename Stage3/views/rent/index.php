@@ -17,9 +17,6 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Rent', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
 
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
@@ -31,10 +28,14 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'rent_time:datetime',
-            'client_id',
-            'rent_start',
+            [
+                'label' => 'Client_id',
+                'attribute' => 'client_id',
+                'visible' => Yii::$app->user->can('admin'),
+            ],
             'car_id',
+            'rent_start',
+            'rent_time',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Rent $model, $key, $index, $column) {

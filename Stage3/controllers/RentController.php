@@ -2,8 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Car;
 use app\models\Rent;
 use app\models\search\RentSearch;
+use Yii;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -39,6 +41,9 @@ class RentController extends Controller
     public function actionIndex()
     {
         $searchModel = new RentSearch();
+        if(Yii::$app->user->can('client')) {
+            $searchModel->setAttribute('client_id', Yii::$app->user->getId());
+        }
         $dataProvider = $searchModel->search($this->request->queryParams);
 
         return $this->render('index', [
@@ -71,6 +76,9 @@ class RentController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
+                $car = Car::find()->where(['id' => $model->car_id])->one();
+                $car->setAttribute('status', 0);
+                $car->save();
                 return $this->redirect(['view', 'id' => $model->id]);
             }
         } else {
@@ -79,6 +87,7 @@ class RentController extends Controller
 
         return $this->render('create', [
             'model' => $model,
+            'car_id' => $_GET['car_id'],
         ]);
     }
 
@@ -111,8 +120,11 @@ class RentController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $model->delete();
+        $car = Car::find()->where(['id' => $model->car_id])->one();
+        $car->setAttribute('status', 1);
+        $car->save();
         return $this->redirect(['index']);
     }
 

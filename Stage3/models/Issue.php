@@ -10,7 +10,7 @@ use Yii;
  * @property int $id
  * @property string|null $explanation
  * @property int $client_id
- * @property string $car_id
+ * @property int $car_id
  *
  * @property Car $car
  * @property Client $client
@@ -32,9 +32,8 @@ class Issue extends \yii\db\ActiveRecord
     {
         return [
             [['client_id', 'car_id'], 'required'],
-            [['client_id'], 'integer'],
+            [['client_id', 'car_id'], 'integer'],
             [['explanation'], 'string', 'max' => 9999],
-            [['car_id'], 'string', 'max' => 45],
             [['car_id'], 'exist', 'skipOnError' => true, 'targetClass' => Car::className(), 'targetAttribute' => ['car_id' => 'id']],
             [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['client_id' => 'id']],
         ];

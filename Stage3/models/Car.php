@@ -7,6 +7,7 @@ use Yii;
 /**
  * This is the model class for table "car".
  *
+ * @property int $id
  * @property string $VIN
  * @property string|null $brand
  * @property string|null $model
@@ -14,7 +15,6 @@ use Yii;
  * @property int|null $seats
  * @property int|null $status
  * @property int $engine_id
- * @property string $id
  *
  * @property Engine $engine
  * @property Issue[] $issues
@@ -36,12 +36,11 @@ class Car extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['VIN', 'engine_id', 'id'], 'required'],
+            [['VIN', 'engine_id'], 'required'],
             [['seats', 'status', 'engine_id'], 'integer'],
             [['VIN'], 'string', 'max' => 11],
-            [['brand', 'model', 'color', 'id'], 'string', 'max' => 45],
+            [['brand', 'model', 'color'], 'string', 'max' => 45],
             [['VIN'], 'unique'],
-            [['id'], 'unique'],
             [['engine_id'], 'exist', 'skipOnError' => true, 'targetClass' => Engine::className(), 'targetAttribute' => ['engine_id' => 'id']],
         ];
     }
@@ -52,6 +51,7 @@ class Car extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
+            'id' => 'ID',
             'VIN' => 'Vin',
             'brand' => 'Brand',
             'model' => 'Model',
@@ -59,7 +59,6 @@ class Car extends \yii\db\ActiveRecord
             'seats' => 'Seats',
             'status' => 'Status',
             'engine_id' => 'Engine ID',
-            'id' => 'ID',
         ];
     }
 
@@ -80,7 +79,7 @@ class Car extends \yii\db\ActiveRecord
      */
     public function getIssues()
     {
-        return $this->hasMany(Issue::className(), ['car_VIN' => 'VIN']);
+        return $this->hasMany(Issue::className(), ['car_id' => 'id']);
     }
 
     /**
@@ -90,6 +89,6 @@ class Car extends \yii\db\ActiveRecord
      */
     public function getRents()
     {
-        return $this->hasMany(Rent::className(), ['car_VIN' => 'VIN']);
+        return $this->hasMany(Rent::className(), ['car_id' => 'id']);
     }
 }
