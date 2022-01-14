@@ -31,8 +31,8 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'explanation',
-            'car_VIN',
-            'rent_id',
+            'client_id',
+            'car_id',
         ],
     ]) ?>
 

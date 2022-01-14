@@ -34,7 +34,7 @@ class CarController extends Controller
                         ],
                         [
                             'allow' => true,
-                            'actions' => ['index','view'],
+                            'actions' => ['index','view', 'rent'],
                             'roles' => ['client', 'admin'],
                         ]
                     ],

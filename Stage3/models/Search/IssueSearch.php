@@ -17,8 +17,8 @@ class IssueSearch extends Issue
     public function rules()
     {
         return [
-            [['id', 'rent_id'], 'integer'],
-            [['explanation', 'car_VIN'], 'safe'],
+            [['id', 'client_id'], 'integer'],
+            [['explanation', 'car_id'], 'safe'],
         ];
     }
 
@@ -59,11 +59,11 @@ class IssueSearch extends Issue
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'rent_id' => $this->rent_id,
+            'client_id' => $this->client_id,
         ]);
 
         $query->andFilterWhere(['like', 'explanation', $this->explanation])
-            ->andFilterWhere(['like', 'car_VIN', $this->car_VIN]);
+            ->andFilterWhere(['like', 'car_id', $this->car_id]);
 
         return $dataProvider;
     }

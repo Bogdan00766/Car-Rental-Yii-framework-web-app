@@ -16,18 +16,15 @@ use yii\widgets\ActiveForm;
         'options' => [
             'data-pjax' => 1
         ],
-
-    ]);
-        ?>
-
+    ]); ?>
 
     <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'explanation') ?>
 
-    <?= $form->field($model, 'car_VIN') ?>
+    <?= $form->field($model, 'client_id') ?>
 
-    <?= $form->field($model, 'rent_id') ?>
+    <?= $form->field($model, 'car_id') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

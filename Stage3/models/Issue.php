@@ -9,11 +9,11 @@ use Yii;
  *
  * @property int $id
  * @property string|null $explanation
- * @property string $car_VIN
- * @property int|null $rent_id
+ * @property int $client_id
+ * @property string $car_id
  *
- * @property Car $carVIN
- * @property Rent $rent
+ * @property Car $car
+ * @property Client $client
  */
 class Issue extends \yii\db\ActiveRecord
 {
@@ -31,12 +31,12 @@ class Issue extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['car_VIN'], 'required'],
-            [['rent_id'], 'integer'],
+            [['client_id', 'car_id'], 'required'],
+            [['client_id'], 'integer'],
             [['explanation'], 'string', 'max' => 9999],
-            [['car_VIN'], 'string', 'max' => 11],
-            [['car_VIN'], 'exist', 'skipOnError' => true, 'targetClass' => Car::className(), 'targetAttribute' => ['car_VIN' => 'VIN']],
-            [['rent_id'], 'exist', 'skipOnError' => true, 'targetClass' => Rent::className(), 'targetAttribute' => ['rent_id' => 'id']],
+            [['car_id'], 'string', 'max' => 45],
+            [['car_id'], 'exist', 'skipOnError' => true, 'targetClass' => Car::className(), 'targetAttribute' => ['car_id' => 'id']],
+            [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['client_id' => 'id']],
         ];
     }
 
@@ -48,28 +48,28 @@ class Issue extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'explanation' => 'Explanation',
-            'car_VIN' => 'Car Vin',
-            'rent_id' => 'Rent ID',
+            'client_id' => 'Client ID',
+            'car_id' => 'Car ID',
         ];
     }
 
     /**
-     * Gets query for [[CarVIN]].
+     * Gets query for [[Car]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getCarVIN()
+    public function getCar()
     {
-        return $this->hasOne(Car::className(), ['VIN' => 'car_VIN']);
+        return $this->hasOne(Car::className(), ['id' => 'car_id']);
     }
 
     /**
-     * Gets query for [[Rent]].
+     * Gets query for [[Client]].
      *
      * @return \yii\db\ActiveQuery
      */
-    public function getRent()
+    public function getClient()
     {
-        return $this->hasOne(Rent::className(), ['id' => 'rent_id']);
+        return $this->hasOne(Client::className(), ['id' => 'client_id']);
     }
 }

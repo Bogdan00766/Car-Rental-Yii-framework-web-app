@@ -31,10 +31,10 @@ $this->params['breadcrumbs'][] = $this->title;
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'car_VIN',
             'rent_time:datetime',
             'client_id',
             'rent_start',
+            'car_id',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Rent $model, $key, $index, $column) {

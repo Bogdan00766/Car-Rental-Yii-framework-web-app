@@ -18,7 +18,7 @@ class RentSearch extends Rent
     {
         return [
             [['id', 'rent_time', 'client_id'], 'integer'],
-            [['car_VIN', 'rent_start'], 'safe'],
+            [['rent_start', 'car_id'], 'safe'],
         ];
     }
 
@@ -64,7 +64,7 @@ class RentSearch extends Rent
             'rent_start' => $this->rent_start,
         ]);
 
-        $query->andFilterWhere(['like', 'car_VIN', $this->car_VIN]);
+        $query->andFilterWhere(['like', 'car_id', $this->car_id]);
 
         return $dataProvider;
     }

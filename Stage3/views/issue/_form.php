@@ -14,9 +14,9 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'explanation')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'car_VIN')->textInput(['maxlength' => true]) ?>
+    <?= $form->field($model, 'client_id')->textInput() ?>
 
-    <?= $form->field($model, 'rent_id')->textInput() ?>
+    <?= $form->field($model, 'car_id')->textInput(['maxlength' => true]) ?>
 
     <div class="form-group">
         <?= Html::submitButton('Save', ['class' => 'btn btn-success']) ?>

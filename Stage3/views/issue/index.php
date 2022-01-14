@@ -11,19 +11,17 @@ use yii\widgets\Pjax;
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Issues';
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="issue-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-
         <?php if(Yii::$app->user->can('client')) {
-        ?>
+            ?>
             <?= Html::a('Create Issue', ['create'], ['class' => 'btn btn-success']); ?>
-
         <?php } ?>
-
     </p>
 
     <?php Pjax::begin(); ?>
@@ -37,8 +35,8 @@ $this->title = 'Issues';
 
             'id',
             'explanation',
-            'car_VIN',
-            'rent_id',
+            'client_id',
+            'car_id',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Issue $model, $key, $index, $column) {

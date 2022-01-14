@@ -6,6 +6,8 @@ use yii\helpers\Html;
 /* @var $model app\models\Issue */
 
 $this->title = 'Create Issue';
+$this->params['breadcrumbs'][] = ['label' => 'Issues', 'url' => ['index']];
+$this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="issue-create">
 
