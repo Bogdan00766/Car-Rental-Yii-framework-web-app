@@ -9,8 +9,9 @@ use Yii;
  *
  * @property int $id
  * @property string|null $car_VIN
- * @property string|null $rent_time
+ * @property int $rent_time
  * @property int $client_id
+ * @property string $rent_start
  *
  * @property Car $carVIN
  * @property Client $client
@@ -32,10 +33,10 @@ class Rent extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['client_id'], 'required'],
-            [['client_id'], 'integer'],
+            [['rent_time', 'client_id'], 'required'],
+            [['rent_time', 'client_id'], 'integer'],
+            [['rent_start'], 'safe'],
             [['car_VIN'], 'string', 'max' => 11],
-            [['rent_time'], 'string', 'max' => 45],
             [['car_VIN'], 'exist', 'skipOnError' => true, 'targetClass' => Car::className(), 'targetAttribute' => ['car_VIN' => 'VIN']],
             [['client_id'], 'exist', 'skipOnError' => true, 'targetClass' => Client::className(), 'targetAttribute' => ['client_id' => 'id']],
         ];
@@ -51,6 +52,7 @@ class Rent extends \yii\db\ActiveRecord
             'car_VIN' => 'Car Vin',
             'rent_time' => 'Rent Time',
             'client_id' => 'Client ID',
+            'rent_start' => 'Rent Start',
         ];
     }
 
