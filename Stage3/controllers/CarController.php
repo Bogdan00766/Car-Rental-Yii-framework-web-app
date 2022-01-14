@@ -5,6 +5,7 @@ namespace app\controllers;
 use app\models\Car;
 use app\models\search\CarSearch;
 use Yii;
+use yii\db\StaleObjectException;
 use yii\filters\AccessControl;
 use yii\helpers\Url;
 use yii\web\Controller;
@@ -139,9 +140,22 @@ class CarController extends Controller
      */
     public function actionDelete($id)
     {
-        $this->findModel($id)->delete();
+        //TODO if taken can't delete
 
-        return $this->redirect(['index']);
+        if($this->findModel($id)->status === 1) {
+            try {
+                $this->findModel($id)->delete();
+            } catch (StaleObjectException $e) {
+            } catch (NotFoundHttpException $e) {
+            } catch (\Exception $e) {
+            }
+            return $this->redirect(['index']);
+        }
+        //else{
+            //TODO display that is taken
+        //}
+
+
     }
 
     /**

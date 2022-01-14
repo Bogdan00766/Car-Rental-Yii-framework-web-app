@@ -25,7 +25,9 @@ use yii\widgets\ActiveForm;
             ]],['placeholder' => 'yyyy/mm/dd'])
         ->textInput(['placeholder' => \Yii::t('app', 'mm/dd/yyyy')]) ;?>
 
-    <?= $form->field($model, 'rent_time')->textInput() ?>
+    <?= $form->field($model, 'rent_time')->textInput()?>
+    <?= $form->field($model, 'client_id')->textInput(['readonly'=> true]) ?>
+    <?= $form->field($model, 'car_id')->textInput(['readonly'=> true]) ?>
     <p>(days)</p>
 
     <div class="form-group">
