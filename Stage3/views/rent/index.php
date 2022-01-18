@@ -36,12 +36,24 @@ $this->params['breadcrumbs'][] = $this->title;
             'car_id',
             'rent_start',
             'rent_time',
-            [
-                'class' => ActionColumn::className(),
-                'urlCreator' => function ($action, Rent $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-                 }
+            ['class' => 'yii\grid\ActionColumn',
+
+                'template'=>'{view} {update} {report}',
+                'buttons'=>[
+                    'report' => function ($url, $model) {
+                        return Html::a('Report', $url, [
+                            'title' => Yii::t('yii', 'report'),
+                        ]);
+                    }
+                ],
             ],
+
+            //[
+            //    'class' => ActionColumn::className(),
+            //    'urlCreator' => function ($action, Rent $model, $key, $index, $column) {
+            //        return Url::toRoute([$action, 'id' => $model->id]);
+            //     }
+            //],
         ],
     ]); ?>
 

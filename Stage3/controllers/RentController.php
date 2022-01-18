@@ -6,6 +6,7 @@ use app\models\Car;
 use app\models\Rent;
 use app\models\search\RentSearch;
 use Yii;
+use yii\helpers\Url;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -33,11 +34,20 @@ class RentController extends Controller
         );
     }
 
+
     /**
-     * Lists all Rent models.
+     * Lists all Car models.
      *
-     * @return string
+     *
      */
+    public function actionReport()
+    {
+        $id = $_GET['id'];
+        $car_id = Rent::find()->where(['id' => $id])->one()->getAttribute('car_id');
+        $this->redirect(Url::to(['/issue/create?car_id='.$car_id]));
+        return;
+    }
+
     public function actionIndex()
     {
         $searchModel = new RentSearch();
