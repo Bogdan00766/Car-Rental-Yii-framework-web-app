@@ -49,7 +49,6 @@ echo Nav::widget([
         [
                 'label' => 'Issues', 'url' => ['#'], 'visible'=> Yii::$app->user->can('client'),
                 'items' => [
-                    ['label' => 'Report Issue', 'url' => ['issue/create']],
                     ['label' => 'My issues', 'url' => ['issue/index?IssueSearch%5Bid%5D=&IssueSearch%5Bexplanation%5D=&IssueSearch%5Bclient_id%5D=' . Yii::$app->user->getId()]], //I can do it better if I will have more time
                 ],
         ],
