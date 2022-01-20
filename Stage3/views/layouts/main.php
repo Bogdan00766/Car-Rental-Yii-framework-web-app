@@ -62,7 +62,7 @@ echo Nav::widget([
                     ['label' => 'Rents', 'url' => ['/rent'],],
                 ],
         ],
-
+        ['label' => 'Become admin(only for project evaluation)', 'url' => ['/client/admin'], 'visible' => Yii::$app->user->can('client')],
         Yii::$app->user->isGuest ? (
         ['label' => 'Login', 'url' => ['/user/login']]
         ) : (

