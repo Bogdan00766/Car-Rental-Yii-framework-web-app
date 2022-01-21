@@ -30,6 +30,16 @@ class ClientController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         [
+                            'allow' => true,
+                            'actions' => ['create'],
+                            'roles' => ['@'],
+                        ],
+                        [
+                            'allow' => true,
+                            'actions' => ['view'],
+                            'roles' => ['client'],
+                        ],
+                        [
                             'allow' => false,
                             'actions' => ['create'],
                             'roles' => ['admin', 'client'],

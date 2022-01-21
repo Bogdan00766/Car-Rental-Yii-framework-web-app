@@ -26,9 +26,9 @@ class AddressController extends Controller
                     'class' => AccessControl::class,
                     'rules' => [
                         [
-                            'allow' => false,
+                            'allow' => true,
                             'actions' => ['create'],
-                            'roles' => ['admin', 'client'],
+                            'roles' => ['@'],
                         ],
                         [
                             'allow' => true,
